@@ -1,30 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import dva from 'dva';
 import './index.css';
-import App from './containers/App';
-import * as serviceWorker from './serviceWorker';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import reducer from './reducers';
-import {getAllProducts} from './actions';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import createLoading from 'dva-loading';
+import products from './models/products';
+import cart from './models/cart';
+// 1. Initialize
+const app = dva();
 
-const middleware = [ thunk ];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
-}
-export const store = createStore(
-    reducer,
-    applyMiddleware(...middleware)
-  )
-  store.dispatch(getAllProducts())
+// 2. Plugins
+// app.use({});
+app.use(createLoading());
+// 3. Model
+// app.model(require('./models/example').default);
+app.model(products);
+app.model(cart);
+// 4. Router
+app.router(require('./router').default);
 
- 
-ReactDOM.render(
-      <Provider store={store}>
-      <App />
-      </Provider>, document.getElementById('root'));
-
-
-serviceWorker.unregister();
+// 5. Start
+app.start('#root');

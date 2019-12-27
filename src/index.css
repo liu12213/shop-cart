@@ -1,31 +1,5 @@
-.prdctimg:hover{
-        filter:alpha(Opacity=50);
-        -moz-opacity:0.5;opacity: 0.5;
-    
-    }
-    .addbtn{
-   
-        background-color: brown
-    }
-.addbtn:hover{
-    background-color: rgb(253, 15, 15);
 
+html, body, :global(#root) {
+  height: 100%;
 }
-.addbtn:active{
-    background-color: rgb(253, 134, 86);
- 
- }
- .soledoutbtn{
-    background-color: rgb(175, 136, 136);
- }
- .checkoutbtn{
-    background-color: brown
- }
- .checkoutbtn:hover{
-    background-color: rgb(253, 15, 15);
 
-}
-.checkoutbtn:active{
-    background-color: rgb(253, 134, 86);
- 
- }
